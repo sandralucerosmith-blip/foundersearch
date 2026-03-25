@@ -33,14 +33,14 @@ The export includes:
 
 ## Notes
 
-- Uses multi-source-ready architecture with `PublicSourceLoader`; replace with live connectors as needed.
+- Uses a live internet connector (`HackerNewsHiringSource` via HN Algolia API) plus local JSON files through `PublicSourceLoader`.
 - Does not guess missing facts and leaves unknown founder emails blank.
 - Keeps source URLs for auditability.
 
 
 ## Next steps for a functional agent
 
-1. Connect one or more live data connectors (funding/news/people APIs) and normalize into the `ProspectRecord` schema.
+1. Expand beyond the included Hacker News live feed with additional funding/news/people APIs and normalize into the `ProspectRecord` schema.
 2. Add enrichment workers for founder contact details and company leadership checks, then capture confidence per enriched field.
 3. Persist snapshots/exports to a durable store (warehouse/CRM) and keep idempotent change detection keys.
 4. Add scheduled orchestration (cron or workflow runner) with alerts for new high-fit and updated prospects.

@@ -11,7 +11,7 @@ import streamlit as st
 
 from founder_prospecting.agent import FounderProspectingAgent
 from founder_prospecting.models import SearchCriteria
-from founder_prospecting.sources import PublicSourceLoader
+from founder_prospecting.sources import HackerNewsHiringSource, PublicSourceLoader
 
 DATA_PATH = Path("data/sample_public_records.json")
 STATE_PATH = Path("data/last_run_snapshot.json")
@@ -67,7 +67,11 @@ extra_source_files = [
     for v in os.getenv("FOUNDER_EXTRA_SOURCE_FILES", "").split(",")
     if v.strip()
 ]
-loader = PublicSourceLoader(DATA_PATH, extra_files=extra_source_files)
+loader = PublicSourceLoader(
+    DATA_PATH,
+    extra_files=extra_source_files,
+    live_sources=[HackerNewsHiringSource()],
+)
 
 
 active_sources = loader.active_sources()
@@ -114,7 +118,7 @@ if "records" in st.session_state:
     st.markdown(
         "\n".join(
             [
-                "1. Connect at least one live source feed and map it to the existing prospect JSON schema.",
+                "1. Live internet feed is connected (Hacker News Algolia) and mapped into the prospect JSON schema.",
                 "2. Add enrichment for founder email + LinkedIn and log confidence changes per field.",
                 "3. Persist approved exports and run snapshots to your CRM or warehouse instead of local files.",
                 "4. Schedule the app with daily/weekly automation and alert on new high-fit companies.",
