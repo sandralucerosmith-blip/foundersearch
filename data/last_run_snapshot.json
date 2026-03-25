@@ -1,0 +1,60 @@
+[
+  {
+    "founder_name": "Maya Patel",
+    "founder_title": "Founder",
+    "company_name": "OpsCanvas",
+    "company_website": "https://opscanvas.example",
+    "city": "Austin",
+    "state": "TX",
+    "us_based_location": true,
+    "employee_count": 76,
+    "industry": "Professional services for B2B operations",
+    "business_model_classification": "professional services",
+    "revenue": 12.0,
+    "latest_funding_round": "Series B",
+    "latest_funding_date": "2025-04-15",
+    "total_funding": 31.0,
+    "currently_raising": true,
+    "founder_email": null,
+    "founder_linkedin": "https://www.linkedin.com/in/maya-patel",
+    "company_linkedin": "https://www.linkedin.com/company/opscanvas",
+    "cfo_listed": false,
+    "source_urls": [
+      "https://opscanvas.example/about",
+      "https://www.linkedin.com/company/opscanvas",
+      "https://funding.example/opscanvas-series-b"
+    ],
+    "confidence_score": 0.84,
+    "notes": "Founder email not publicly listed.",
+    "fit_tier": "High-fit"
+  },
+  {
+    "founder_name": "Avery Jordan",
+    "founder_title": "Co-Founder & CEO",
+    "company_name": "LedgerPilot",
+    "company_website": "https://ledgerpilot.example",
+    "city": "Chicago",
+    "state": "IL",
+    "us_based_location": true,
+    "employee_count": 42,
+    "industry": "Tech-enabled financial operations software",
+    "business_model_classification": "SaaS",
+    "revenue": 8.5,
+    "latest_funding_round": "Series A",
+    "latest_funding_date": "2025-09-02",
+    "total_funding": 18.0,
+    "currently_raising": false,
+    "founder_email": "avery@ledgerpilot.example",
+    "founder_linkedin": "https://www.linkedin.com/in/avery-jordan",
+    "company_linkedin": "https://www.linkedin.com/company/ledgerpilot",
+    "cfo_listed": false,
+    "source_urls": [
+      "https://ledgerpilot.example/team",
+      "https://www.linkedin.com/company/ledgerpilot",
+      "https://news.example/ledgerpilot-series-a"
+    ],
+    "confidence_score": 0.92,
+    "notes": "No top finance executive listed on team page.",
+    "fit_tier": "High-fit"
+  }
+]

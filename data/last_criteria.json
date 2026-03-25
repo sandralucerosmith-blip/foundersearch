@@ -1,0 +1,29 @@
+{
+  "geography": [
+    "Chicago",
+    "United States"
+  ],
+  "employee_min": 10,
+  "employee_max": 100,
+  "funding_stages": [
+    "Series A",
+    "Series B",
+    "Raising"
+  ],
+  "funding_recency_days": 730,
+  "include_business_models": [
+    "tech-enabled",
+    "SaaS",
+    "professional services"
+  ],
+  "revenue_cap_millions": 50.0,
+  "exclude_keywords": [
+    "manufacturing",
+    "retail",
+    "ecommerce",
+    "hospitality",
+    "restaurants"
+  ],
+  "include_keywords": [],
+  "include_low_fit": false
+}
