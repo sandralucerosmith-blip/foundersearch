@@ -19,6 +19,12 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+To include non-seed records, pass extra source files:
+
+```bash
+FOUNDER_EXTRA_SOURCE_FILES="data/live_records.json,data/partner_feed.json" streamlit run app.py
+```
+
 ## CSV columns
 
 The export includes:
@@ -30,3 +36,12 @@ The export includes:
 - Uses multi-source-ready architecture with `PublicSourceLoader`; replace with live connectors as needed.
 - Does not guess missing facts and leaves unknown founder emails blank.
 - Keeps source URLs for auditability.
+
+
+## Next steps for a functional agent
+
+1. Connect one or more live data connectors (funding/news/people APIs) and normalize into the `ProspectRecord` schema.
+2. Add enrichment workers for founder contact details and company leadership checks, then capture confidence per enriched field.
+3. Persist snapshots/exports to a durable store (warehouse/CRM) and keep idempotent change detection keys.
+4. Add scheduled orchestration (cron or workflow runner) with alerts for new high-fit and updated prospects.
+5. Add observability: source-level ingestion counts, filter drop-off metrics, and error retries for each connector.
