@@ -4,6 +4,7 @@ from dataclasses import asdict
 from datetime import date
 from pathlib import Path
 import json
+import os
 
 import pandas as pd
 import streamlit as st
@@ -61,7 +62,21 @@ criteria = SearchCriteria(
 )
 
 agent = FounderProspectingAgent(criteria)
-loader = PublicSourceLoader(DATA_PATH)
+extra_source_files = [
+    Path(v.strip())
+    for v in os.getenv("FOUNDER_EXTRA_SOURCE_FILES", "").split(",")
+    if v.strip()
+]
+loader = PublicSourceLoader(DATA_PATH, extra_files=extra_source_files)
+
+
+active_sources = loader.active_sources()
+if active_sources == [DATA_PATH.name]:
+    st.warning(
+        "Only seed data is active. Add live input files via FOUNDER_EXTRA_SOURCE_FILES to expand results."
+    )
+else:
+    st.info(f"Active input sources: {', '.join(active_sources)}")
 
 if st.button("Run Initial Scan", type="primary"):
     raw = loader.load_candidates()
@@ -93,6 +108,20 @@ if "records" in st.session_state:
             file_name=f"founder_prospects_{date.today().isoformat()}.csv",
             mime="text/csv",
         )
+
+
+    st.subheader("Next Steps for Functional Agent")
+    st.markdown(
+        "\n".join(
+            [
+                "1. Connect at least one live source feed and map it to the existing prospect JSON schema.",
+                "2. Add enrichment for founder email + LinkedIn and log confidence changes per field.",
+                "3. Persist approved exports and run snapshots to your CRM or warehouse instead of local files.",
+                "4. Schedule the app with daily/weekly automation and alert on new high-fit companies.",
+            ]
+        )
+    )
+
 
     st.subheader("Scheduled Scans")
     schedule_mode = st.selectbox("Schedule cadence", options=["Daily", "Weekly"])
